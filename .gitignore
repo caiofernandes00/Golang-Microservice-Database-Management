@@ -13,3 +13,10 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+
+# Envoronment variables
+.env*
+!.env.example
+
+# Docker
+.docker/dbdata
