@@ -1,7 +1,9 @@
-# createdb:
-# 	docker exec -it golang-microservice-database-management-db createdb --username=postgres --owner=postgres simple_bank
+# Up all dependencies with the application
+appcontainer:
+	docker compose --env-file .env.local.container -f docker-compose.yaml up --build --force-recreate
 
-# dropdb:
-# 	docker exec -it golang-microservice-database-management-db dropdb simple_bank
+# Up all dependencies with the application with environments to work with debug mode on vscode
+appdebug:
+	docker compose --env-file .env.local.debug -f docker-compose.yaml up --build --force-recreate
 
-# .PHONY: createdb
+.PHONY: appcontainer appdebug

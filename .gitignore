@@ -15,8 +15,8 @@
 # vendor/
 
 # Envoronment variables
-.env*
-!.env.example
+.env
+!.env.*
 
 # Docker
 .docker/dbdata

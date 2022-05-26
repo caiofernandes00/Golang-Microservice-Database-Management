@@ -5,10 +5,10 @@ services:
     build: .
     entrypoint: ./.docker/app/entrypoint.sh
     container_name: golang-microservice-database-management-app
+    environment:
+      - PROFILE=$PROFILE
     networks:
       - golang-microservice-database-management-network
-    env_file:
-      - ./.env.example
     volumes:
       - .:/go/app
     depends_on:
@@ -28,8 +28,6 @@ services:
     environment:
       - POSTGRES_USERNAME=$POSTGRES_USERNAME
       - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
-    env_file:
-      - ./.env.example
     networks:
       - golang-microservice-database-management-network
 

@@ -2,6 +2,14 @@
 
 An application to learn golang and focusing in databases
 
+### Running the application
+
+To run the application first mak sure to have the `make` cli tool installed.
+There are two ways to execute the application:
+
+- If you're going to run test cases, you can use the `make appdebug` to execute the application in debug mode, so you can use the debug feature on the vscode.
+- If you're going to develop features or running the tests not focusing in debugging you can use the `make appcontainer` command.
+
 ### Migrations
 
 To generate new migrations just hit the code below:
@@ -25,4 +33,4 @@ To generate new queries from the queries located at `src/infrastructure/db/migra
 sqlc generate
 ```
 
-Files under `src/infrastructure/db/queries` should be generated (DO NOT EDIT)
+Files under `src/infrastructure/db/queries` should be generated (DO NOT EDIT), they are like CRUD automatically generated from .sql files.
