@@ -13,6 +13,7 @@ import (
 )
 
 var testQueries *db.Queries
+var testDB *sql.DB
 var dbDriver, dbSource string
 
 func GetDsn() (string, string) {
@@ -23,14 +24,15 @@ func GetDsn() (string, string) {
 }
 
 func TestMain(m *testing.M) {
+	var err error
 	utils.LoadEnv()
 
 	dbDriver, dbSource := GetDsn()
-	conn, err := sql.Open(dbDriver, dbSource)
+	testDB, err = sql.Open(dbDriver, dbSource)
 	if err != nil {
 		log.Fatal("cannot connect to db:", err)
 	}
 
-	testQueries = db.New(conn)
+	testQueries = db.New(testDB)
 	os.Exit(m.Run())
 }
