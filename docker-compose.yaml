@@ -7,10 +7,16 @@ services:
     container_name: golang-microservice-database-management-app
     environment:
       - PROFILE=$PROFILE
+      - POSTGRES_USERNAME=$POSTGRES_USERNAME
+      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+      - POSTGRES_DB=$POSTGRES_DB
+      - POSTGRES_PORT=$POSTGRES_PORT
+      - POSTGRES_HOST=$POSTGRES_HOST
+      - POSTGRES_URL=$POSTGRES_URL
     networks:
       - golang-microservice-database-management-network
     volumes:
-      - .:/go/app
+      - .:/go/Golang-Microservice-Database-Management
     depends_on:
       - database
       - pgadmin
@@ -28,6 +34,7 @@ services:
     environment:
       - POSTGRES_USERNAME=$POSTGRES_USERNAME
       - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+      - POSTGRES_DB=$POSTGRES_DB
     networks:
       - golang-microservice-database-management-network
 
