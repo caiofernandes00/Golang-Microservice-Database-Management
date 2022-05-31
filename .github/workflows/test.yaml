@@ -41,7 +41,7 @@ jobs:
         which migrate
 
     - name: Run migrations
-      run: migrate -path src/infrastructure/db/migrations -database "${{ env.POSTGRES_URL }}" -verbose up
+      run: migrate -path src/infrastructure/db/migrations -database "postgresql://postgres:root@localhost:5432/simple_bank?sslmode=disable" -verbose up
 
     - name: Test
       run: make test
