@@ -43,5 +43,11 @@ jobs:
     - name: Run migrations
       run: migrate -path src/infrastructure/db/migrations -database "postgresql://postgres:root@localhost:5432/simple_bank?sslmode=disable" -verbose up
 
-    - name: Test
+    - name: Export env files
+      run: |
+        whoami
+        pwd
+        export PROFILE=ci
+
+    - name: Run tests
       run: make test
