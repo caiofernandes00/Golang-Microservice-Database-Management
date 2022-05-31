@@ -42,8 +42,7 @@ jobs:
 
     - name: Export env files
       run: |
-        echo -e "$(cat .env.ci | xargs printf -- 'export %s\n' )" >> /home/runner/.bashrc
-        source /home/runner/.bashrc
+        cat .env.ci | xargs printf -- 'export %s\n'
         export PROFILE=ci
 
     - name: Run migrations
