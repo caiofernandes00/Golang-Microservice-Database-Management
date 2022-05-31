@@ -15,14 +15,15 @@ There are two ways to execute the application:
 To generate new migrations just hit the code below:
   
 ```shell
-migrate create -ext sql -dir src/infrastructure/db/migrations -seq example_schema
+make create_migration file=example_schema
 ```
 
 A new file should be created under `src/infrastructure/db/migrations` with the name `000002_schema_migration_up.sql` and `000002_schema_migration_down.sql`.
 After editing these two sql files just hit the code below to apply.
 
 ```shell
-migrate -path src/infrastructure/db/migrations -database "postgresql://$POSTGRES_USERNAME:$POSTGRES_PASSWORD@golang-microservice-database-management-db:5432/simple_bank?sslmode=disable" -verbose up
+make migrate_up 
+make migrate_down
 ```
 
 ### QUERIES
@@ -30,7 +31,7 @@ migrate -path src/infrastructure/db/migrations -database "postgresql://$POSTGRES
 To generate new queries from the queries located at `src/infrastructure/db/migrations` just hit the code below:
   
 ```shell
-sqlc generate
+make generate_query
 ```
 
 Files under `src/infrastructure/db/queries` should be generated (DO NOT EDIT), they are like CRUD automatically generated from .sql files.
