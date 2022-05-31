@@ -3,21 +3,18 @@ INSERT INTO accounts (
   owner,
   balance,
   currency
-) values (
-  $1,
-  $2,
-  $3
+) VALUES (
+  $1, $2, $3
 ) RETURNING *;
 
 -- name: GetAccount :one
 SELECT * FROM accounts
-WHERE id = $1
-LIMIT 1;
+WHERE id = $1 LIMIT 1;
 
--- name: ListAccount :many
+-- name: ListAccounts :many
 SELECT * FROM accounts
 ORDER BY id
-LIMIT $1 
+LIMIT $1
 OFFSET $2;
 
 -- name: UpdateAccount :one
