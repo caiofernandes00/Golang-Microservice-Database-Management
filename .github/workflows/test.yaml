@@ -45,8 +45,8 @@ jobs:
 
     - name: Export env files
       run: |
-        whoami
-        pwd
+        echo -e "$(cat .env | xargs printf -- 'export %s\n' )" >> /home/runner/.bashrc
+        bash
         export PROFILE=ci
 
     - name: Run tests
