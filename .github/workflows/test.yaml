@@ -48,7 +48,8 @@ jobs:
         echo -e "$(cat .env.ci | xargs printf -- 'export %s\n' )" >> /home/runner/.bashrc
         bash
         export PROFILE=ci
-        echo $POSTGRES_URL
 
+    - name: Run tests
+      run: echo $POSTGRES_URL
     - name: Run tests
       run: make test
