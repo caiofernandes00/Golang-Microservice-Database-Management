@@ -45,5 +45,4 @@ jobs:
 
     - name: Run tests
       run: |
-        export PROFILE=ci
-        make test
+        PROFILE=ci && go test -v ./...
