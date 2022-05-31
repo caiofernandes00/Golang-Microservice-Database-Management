@@ -40,16 +40,14 @@ jobs:
         sudo mv migrate /usr/bin
         which migrate
 
-    - name: Run migrations
-      run: migrate -path src/infrastructure/db/migrations -database "postgresql://postgres:root@localhost:5432/simple_bank?sslmode=disable" -verbose up
-
     - name: Export env files
       run: |
         echo -e "$(cat .env.ci | xargs printf -- 'export %s\n' )" >> /home/runner/.bashrc
         bash
         export PROFILE=ci
 
-    - name: Run tests
-      run: echo $POSTGRES_URL
+    - name: Run migrations
+      run: migrate -path src/infrastructure/db/migrations -database "$POSTGRES_URL" -verbose up
+
     - name: Run tests
       run: make test
