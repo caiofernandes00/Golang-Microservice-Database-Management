@@ -15,6 +15,8 @@ func LoadEnv() {
 	currentWorkDirectory, _ := os.Getwd()
 	rootPath := projectName.Find([]byte(currentWorkDirectory))
 
+	print("MAMACO", os.Getenv("PROFILE"))
+
 	err := godotenv.Load(string(rootPath) + `/.env.` + os.Getenv("PROFILE"))
 
 	if err != nil {
